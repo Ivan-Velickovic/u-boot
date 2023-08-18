@@ -521,6 +521,29 @@ static int jh7110_clk_init(struct udevice *dev)
 	       starfive_clk_gate(priv->sys,
 				 "gmac0_gtxc", "gmac0_gtxclk",
 				 SYS_OFFSET(JH7110_GMAC0_GTXC)));
+	/* TIMER */
+	printf("INFO: TURNING ON TIMER CLOCKS\n");
+	clk_dm(JH7110_TIMER_CLK_APB,
+       starfive_clk_gate(priv->sys,
+			 "u0_si5_timer_clk_apb", "apb12",
+			 SYS_OFFSET(JH7110_TIMER_CLK_APB)));
+	clk_dm(JH7110_TIMER_CLK_TIMER0,
+       starfive_clk_gate(priv->sys,
+			 "u0_si5_timer_clk_timer0", "osc",
+			 SYS_OFFSET(JH7110_TIMER_CLK_TIMER0)));
+	clk_dm(JH7110_TIMER_CLK_TIMER1,
+       starfive_clk_gate(priv->sys,
+			 "u0_si5_timer_clk_timer1", "osc",
+			 SYS_OFFSET(JH7110_TIMER_CLK_TIMER1)));
+	clk_dm(JH7110_TIMER_CLK_TIMER0,
+       starfive_clk_gate(priv->sys,
+			 "u0_si5_timer_clk_timer2", "osc",
+			 SYS_OFFSET(JH7110_TIMER_CLK_TIMER2)));
+	clk_dm(JH7110_TIMER_CLK_TIMER0,
+       starfive_clk_gate(priv->sys,
+			 "u0_si5_timer_clk_timer3", "osc",
+			 SYS_OFFSET(JH7110_TIMER_CLK_TIMER3)));
+	printf("INFO: FINISHED TURNING ON TIMER CLOCKS\n");
 	/*UART0*/
 	clk_dm(JH7110_UART0_CLK_APB,
 	       starfive_clk_gate(priv->sys,
